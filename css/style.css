@@ -1,0 +1,466 @@
+/*
+ * Global styles for the Mars mission educational website. This stylesheet
+ * defines a cohesive colour palette, typography and layout rules that
+ * closely follow the look and feel of the original project while being
+ * simple to maintain. The design uses a right‑to‑left orientation for
+ * Arabic text and a warm palette inspired by Martian landscapes.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+:root {
+  /* Primary accent used for buttons and active states */
+  --primary-color: #D73B3E;
+  /* Secondary accent for subtle highlights */
+  --secondary-color: #F1E0D6;
+  /* Text colours */
+  --heading-color: #2C2C2C;
+  --body-color: #444;
+  /* Background colours */
+  --page-bg: #FDF9F6;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E5E5;
+  --border-radius: 12px;
+  --transition-speed: 0.2s;
+  --container-width: 1100px;
+}
+
+html {
+  direction: rtl;
+  font-family: 'Cairo', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--page-bg);
+  color: var(--body-color);
+  line-height: 1.7;
+}
+
+/* Utility container to limit content width */
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation bar */
+header {
+  background-color: var(--card-bg);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.logo span {
+  font-size: 1.6rem;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--body-color);
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--primary-color);
+}
+
+.lang-toggle {
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  background-color: var(--card-bg);
+  transition: background-color var(--transition-speed);
+}
+.lang-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  background-image: url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.55);
+  mix-blend-mode: multiply;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 650px;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  margin: 0 0 1rem;
+  font-weight: 700;
+}
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 10px rgba(215,59,62,0.4);
+}
+.btn-secondary {
+  background-color: var(--card-bg);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Section headings */
+section {
+  padding: 4rem 0;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+section p.section-desc {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: var(--body-color);
+}
+
+/* Goal card */
+.goal-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* Project features cards */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.feature-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  flex: 1 1 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.feature-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.feature-card .content {
+  padding: 1rem 1.3rem 1.5rem;
+}
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+.feature-card p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Call to action section */
+.cta {
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+.cta h3 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.cta p {
+  margin-bottom: 2rem;
+  color: var(--body-color);
+}
+
+/* Crew page styles */
+/* Crew listing in two columns similar to original design */
+.crew-list {
+  display: grid;
+  /* Use a wider minimum to limit to two cards per row on desktop */
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  /* Force left-to-right placement so the first item appears on the left column */
+  direction: ltr;
+}
+
+/* Card styling for crew members */
+.crew-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  padding-top: 2.7rem; /* extra space for icon */
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  min-height: 200px;
+  /* Restore right-to-left text direction inside the card */
+  direction: rtl;
+}
+
+/* Icon container for crew cards */
+.crew-card .icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+/* Colour variants for each crew role */
+.crew-card .icon.commander { background-color: #F16C20; }
+.crew-card .icon.botanist { background-color: #34A853; }
+.crew-card .icon.engineer { background-color: #4285F4; }
+.crew-card .icon.robot { background-color: #9C27B0; }
+
+.crew-card h4 {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+.crew-card small {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--body-color);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+.crew-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--body-color);
+}
+
+/* Crew photo placeholder */
+.crew-photo {
+  background: linear-gradient(135deg, #FFE6C9, #F5F0FF);
+  height: 260px;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--body-color);
+  font-size: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 0 0 1px var(--card-border);
+}
+.crew-photo span {
+  font-size: 1rem;
+  margin-top: 0.8rem;
+}
+
+/* Journey page styles */
+.journey-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.step {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  display: flex;
+  /* Display items in a row. We switch to LTR within steps to control ordering */
+  flex-direction: row;
+  direction: ltr;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: transform var(--transition-speed);
+}
+.step:hover {
+  transform: translateY(-3px);
+}
+/* Text area within a step */
+.step .text {
+  flex: 1;
+  padding: 1.5rem;
+}
+.step .text h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+.step .text p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Image container for a step. It holds the image and overlays such as icons and labels */
+.step-image {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.step-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Icon that overlays the image. Colour can be changed via utility classes */
+.step-image .icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+}
+.step-image .label {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+/* Utility colours for the step icons */
+.icon-red { background-color: #E34A4A; }
+.icon-green { background-color: #3AAA35; }
+.icon-purple { background-color: #7754B3; }
+.icon-pink { background-color: #D85C95; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .step {
+    flex-direction: column;
+  }
+  .step img {
+    width: 100%;
+    height: 200px;
+  }
+  .step .text {
+    padding: 1rem;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+}
